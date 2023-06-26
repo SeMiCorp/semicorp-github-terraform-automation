@@ -5,7 +5,6 @@ provider "github" {
 
 data "github_team" "semicorp_admins" {
   slug = "semicorpadmins"
-  description = "Happy admins grup"
 }
 
 # Add users to semicorpadmins team
