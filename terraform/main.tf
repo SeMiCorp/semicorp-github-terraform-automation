@@ -7,6 +7,24 @@ data "github_team" "semicorp_admins" {
   slug = "semicorpadmins"
 }
 
+# Add users to semicorpadmins team
+resource "github_team_membership" "semicorp_admins-membership" {
+  team_id  = "${github_team.semicorp_admins.id}"
+  username = "sewerynmi"
+  role     = "member"
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Create repository
