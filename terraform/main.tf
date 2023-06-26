@@ -24,18 +24,6 @@ resource "github_team_membership" "example-team-membership" {
   role     = "member"
 }
 
-resource "github_team_membership" "example-team-membership" {
-  team_id  = "${github_team.example-team.id}"
-  username = "sewerynmi"
-  role     = "member"
-}
-
-resource "github_team_membership" "example-team-membership" {
-  team_id  = "${github_team.example-team.id}"
-  username = "SewerynMi01"
-  role     = "member"
-}
-
 # Add Team to Repo
 resource "github_team_repository" "example-team-repo" {
   team_id    = "${github_team.example-team.id}"
