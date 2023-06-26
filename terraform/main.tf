@@ -5,11 +5,12 @@ provider "github" {
 
 data "github_team" "semicorp_admins" {
   slug = "semicorpadmins"
+  description = "Happy admins grup"
 }
 
 # Add users to semicorpadmins team
-resource "github_team_membership" "semicorpadmins-membership" {
-  team_id  = "${github_team.semicorpadmins.id}"
+resource "github_team_membership" "semicorp_admins" {
+  team_id  = "${github_team.semicorp_admins.id}"
   username = "sewerynmi"
   role     = "member"
 }
