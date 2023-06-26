@@ -19,3 +19,15 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.4
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve tfplan
