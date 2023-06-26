@@ -7,15 +7,28 @@ data "github_team" "semicorp_admins" {
   slug = "semicorpadmins"
 }
 
-# Add users to semicorpadmins team
-resource "github_team_membership" "semicorp_admins" {
-  team_id  = "${github_team.semicorp_admins.id}"
+
+resource "github_team" "maintainers-team" {
+  name        = "maintainers-team"
+  description = "Maintainers-team created with Terraform"
+  privacy     = "closed"
+}
+
+resource "github_team_membership" "maintainers-team-membership" {
+  team_id  = "${github_team.maintainers-team.id}"
   username = "sewerynmi"
   role     = "member"
 }
 
+resource "github_repository" "automation_repo" {
+  name = "github-terraform-automation"
+}
 
-
+resource "github_team_repository" "automation_repo_team" {
+  team_id    = "${github_team.maintainers-team.id}"
+  repository = "${github_repository.automation_repo.name}"
+  permission = "push"
+}
 
 
 
