@@ -1,0 +1,21 @@
+name: Validate Config
+on:
+  push:
+    branches:
+      - main
+      - "**issue-**"
+
+jobs:
+  terraform-validate:
+    defaults:
+      run:
+        working-directory: ./terraform
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_OWNER: semicorp
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4
