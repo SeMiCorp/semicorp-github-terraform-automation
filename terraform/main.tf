@@ -33,11 +33,23 @@ resource "github_team_repository" "maintainers_team_repos" {
   permission = "push"
 }
 
-# resource "github_team_membership" "maintainers-team-membership" {
-#   team_id  = "${github_team.maintainers-team.id}"
-#   username = "sewerynmi"
-#   role     = "member"
-# }
+resource "github_team_membership" "maintainers-team-membership-sewerymi" {
+  team_id  = data.github_team.maintainers_team.id
+  username = "sewerynmi"
+  role     = "member"
+}
+
+resource "github_team_membership" "maintainers-team-membership-severinum" {
+  team_id  = data.github_team.maintainers_team.id
+  username = "severinum"
+  role     = "member"
+}
+
+resource "github_team_membership" "maintainers-team-membership-SewerynMi01" {
+  team_id  = data.github_team.maintainers_team.id
+  username = "SewerynMi01"
+  role     = "member"
+}
 
 
 # resource "github_team_repository" "automation_repo_team" {
