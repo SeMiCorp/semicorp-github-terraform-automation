@@ -69,7 +69,6 @@ variable "issue_labels" {
 resource "github_issue_label" "issue_labels_repos" {
   for_each   = module.repository
   repository = each.value.name
-  count      = "${length(var.issue_labels)}"
   name       = "${element(keys(var.issue_labels), count.index)}"
   color      = "${element(values(var.issue_labels), count.index)}"
 }
