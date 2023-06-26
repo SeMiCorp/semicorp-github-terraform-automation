@@ -22,16 +22,18 @@ resource "github_team_repository" "semicorp_repos" {
   permission = "admin"
 }
 
+data "github_team" "maintainers-team" {
+  name        = "maintainers-team"
+  description = "Maintainers-team created with Terraform"
+  privacy     = "closed"
+}
 
-
-
-
-
-# data "github_team" "maintainers-team" {
-#   name        = "maintainers-team"
-#   description = "Maintainers-team created with Terraform"
-#   privacy     = "closed"
-# }
+resource "github_team_repository" "maintainers_team_repos" {
+  for_each   = module.repository
+  team_id    = data.github_team.maintainers-team.id
+  repository = each.value.name
+  permission = "write"
+}
 
 # resource "github_team_membership" "maintainers-team-membership" {
 #   team_id  = "${github_team.maintainers-team.id}"
