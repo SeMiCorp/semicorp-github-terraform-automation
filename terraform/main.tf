@@ -23,9 +23,7 @@ resource "github_team_repository" "semicorp_repos" {
 }
 
 data "github_team" "maintainers-team" {
-  name        = "maintainers-team"
-  description = "Maintainers-team created with Terraform"
-  privacy     = "closed"
+  slug = "maintainers-team"
 }
 
 resource "github_team_repository" "maintainers_team_repos" {
