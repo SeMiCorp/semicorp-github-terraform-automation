@@ -12,7 +12,7 @@ jobs:
         working-directory: ./terraform
     runs-on: ubuntu-latest
     env:
-      GITHUB_OWNER: semicorp
+      GITHUB_OWNER: SeMiCorp
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
