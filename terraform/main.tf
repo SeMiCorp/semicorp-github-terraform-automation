@@ -1,31 +1,56 @@
 provider "github" {
   # owner = Set using env.vars. - taken from GITHUB_OWNER
-  # token = 
+  # token = also taken from env.vars (check withub workflow; token added as org.secret)
 }
 
 data "github_team" "semicorp_admins" {
   slug = "semicorpadmins"
 }
 
+module "repository" {
+    source = "./modules/repository"
+    for_each = local.repository_configs
 
-resource "github_team" "maintainers-team" {
-  name        = "maintainers-team"
-  description = "Maintainers-team created with Terraform"
-  privacy     = "closed"
+    name   = each.key
+    config = each.value
 }
 
-resource "github_team_membership" "maintainers-team-membership" {
-  team_id  = "${github_team.maintainers-team.id}"
-  username = "sewerynmi"
-  role     = "member"
+resource "github_team_repository" "semicorp_repos" {
+  for_each   = module.repository
+  team_id    = data.github_team.semicorp_admins.id
+  repository = each.value.name
+  permission = "admin"
 }
 
 
-resource "github_team_repository" "automation_repo_team" {
-  team_id    = "${github_team.maintainers-team.id}"
-  repository = "github-terraform-automation"
-  permission = "push"
-}
+
+
+
+
+# data "github_team" "maintainers-team" {
+#   name        = "maintainers-team"
+#   description = "Maintainers-team created with Terraform"
+#   privacy     = "closed"
+# }
+
+# resource "github_team_membership" "maintainers-team-membership" {
+#   team_id  = "${github_team.maintainers-team.id}"
+#   username = "sewerynmi"
+#   role     = "member"
+# }
+
+
+# resource "github_team_repository" "automation_repo_team" {
+#   team_id    = "${github_team.maintainers-team.id}"
+#   repository = "github-terraform-automation"
+#   permission = "push"
+# }
+
+
+
+
+
+
 
 
 
