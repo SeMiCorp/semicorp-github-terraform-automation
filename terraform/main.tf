@@ -3,8 +3,8 @@ provider "github" {
   # token = 
 }
 
-data "github_team" "semicorpadmins" {
-  slug = "semicorpadmins"
+data "github_team" "semicorp_admins" {
+  slug = "semicorp-admins"
 }
 
 resource "github_repository" "example-repo" {
