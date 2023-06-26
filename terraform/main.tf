@@ -30,7 +30,7 @@ resource "github_team_repository" "maintainers_team_repos" {
   for_each   = module.repository
   team_id    = data.github_team.maintainers_team.id
   repository = each.value.name
-  permission = "write"
+  permission = "push"
 }
 
 # resource "github_team_membership" "maintainers-team-membership" {
