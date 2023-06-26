@@ -50,25 +50,3 @@ resource "github_team_membership" "maintainers-team-membership-SewerynMi01" {
   username = "SewerynMi01"
   role     = "member"
 }
-
-
-
-
-
-
-#Add some issues labels colours
-variable "issue_labels" {
-  default = {
-    "task"  = "533D99"
-    "sub-task" = "FFB340"
-    "bugfix" = "CC6A14"
-  }
-}
-
-# Add issues labels
-resource "github_issue_label" "issue_labels_repos" {
-  for_each   = module.repository
-  repository = each.value.name
-  name       = "${element(keys(var.issue_labels), count.index)}"
-  color      = "${element(values(var.issue_labels), count.index)}"
-}
