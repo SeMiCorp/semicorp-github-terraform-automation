@@ -1,0 +1,37 @@
+name: Validate Config
+on:
+  push:
+    branches:
+      - main
+      - "**issue-**"
+
+jobs:
+  terraform-validate:
+    defaults:
+      run:
+        working-directory: ./terraform
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_OWNER: SeMiCorp
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -reconfigure
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve tfplan
