@@ -20,7 +20,7 @@ resource "github_team_membership" "maintainers-team-membership" {
   role     = "member"
 }
 
-resource "github_repository" "automation_repo" {
+data "github_repository" "automation_repo" {
   name = "github-terraform-automation"
 }
 
