@@ -22,13 +22,13 @@ resource "github_team_repository" "semicorp_repos" {
   permission = "admin"
 }
 
-data "github_team" "maintainers-team" {
+data "github_team" "maintainers_team" {
   slug = "maintainers-team"
 }
 
 resource "github_team_repository" "maintainers_team_repos" {
   for_each   = module.repository
-  team_id    = data.github_team.maintainers-team.id
+  team_id    = data.github_team.maintainers_team.id
   repository = each.value.name
   permission = "write"
 }
