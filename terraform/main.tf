@@ -4,7 +4,7 @@ provider "github" {
 }
 
 data "github_team" "semicorp_admins" {
-  slug = "semicorp-admins"
+  slug = "semicorpadmins"
 }
 
 resource "github_repository" "example-repo" {
