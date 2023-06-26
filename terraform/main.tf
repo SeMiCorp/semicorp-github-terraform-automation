@@ -20,13 +20,10 @@ resource "github_team_membership" "maintainers-team-membership" {
   role     = "member"
 }
 
-data "github_repository" "automation_repo" {
-  name = "github-terraform-automation"
-}
 
 resource "github_team_repository" "automation_repo_team" {
   team_id    = "${github_team.maintainers-team.id}"
-  repository = "${github_repository.automation_repo.name}"
+  repository = "github-terraform-automation"
   permission = "push"
 }
 
