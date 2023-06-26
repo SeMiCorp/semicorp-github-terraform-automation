@@ -8,8 +8,8 @@ data "github_team" "semicorp_admins" {
 }
 
 # Add users to semicorpadmins team
-resource "github_team_membership" "semicorp_admins-membership" {
-  team_id  = "${github_team.semicorp_admins.id}"
+resource "github_team_membership" "semicorpadmins-membership" {
+  team_id  = "${github_team.semicorpadmins.id}"
   username = "sewerynmi"
   role     = "member"
 }
