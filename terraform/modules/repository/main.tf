@@ -10,12 +10,12 @@ resource "github_branch_protection_v3" "main" {
   }
   repository = data.github_repository.default.name
 
-  pattern                         = "main"
-  required_linear_history         = true
-  require_conversation_resolution = true
-  enforce_admins                  = true
-  allows_deletions                = false
-  allows_force_pushes             = false
+  brabranch =                     "main"
+  # required_linear_history         = true
+  # require_conversation_resolution = true
+  # enforce_admins                  = true
+  # allows_deletions                = false
+  # allows_force_pushes             = false
 
 
   required_status_checks {
