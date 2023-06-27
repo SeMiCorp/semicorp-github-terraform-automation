@@ -1,6 +1,6 @@
 locals {
 
-   checks = {
+  checks = {
     
   }
 
