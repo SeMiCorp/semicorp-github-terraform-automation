@@ -12,7 +12,7 @@ locals {
       "checks" : ["terraform-validate"]
     },
     "demo-repo" : {
-      
+      "checks" : ["terraform-validate"]
     }
   }
   repository_configs = {
