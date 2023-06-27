@@ -10,7 +10,7 @@ resource "github_branch_protection_v3" "main" {
   }
   repository = data.github_repository.default.name
 
-  brabranch =                     "main"
+  branch =                     "main"
   # required_linear_history         = true
   # require_conversation_resolution = true
   # enforce_admins                  = true
