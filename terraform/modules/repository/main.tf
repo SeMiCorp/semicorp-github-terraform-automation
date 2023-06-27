@@ -18,10 +18,10 @@ resource "github_branch_protection_v3" "main" {
   # allows_force_pushes             = false
 
 
-  required_status_checks {
-    strict   = true
-    checks = []
-  }
+  # required_status_checks {
+  #   strict   = true
+  #   checks = []
+  # }
 
   required_pull_request_reviews {
     dismiss_stale_reviews           = true
