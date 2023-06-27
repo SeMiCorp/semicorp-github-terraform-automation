@@ -12,6 +12,9 @@ resource "github_branch_protection_v3" "main" {
 
   branch = "main"
   require_conversation_resolution = true
+  enforce_admins = true
+
+
 
   required_status_checks {
     strict   = true
