@@ -20,7 +20,6 @@ resource "github_branch_protection_v3" "main" {
 
   required_status_checks {
     strict   = true
-    contexts = var.config.checks
   }
 
   required_pull_request_reviews {
