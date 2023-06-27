@@ -22,9 +22,10 @@ resource "github_team_repository" "semicorp_repos" {
   permission = "admin"
 }
 
-resource "github_team" "maintainers" {
+resource "github_team" "maintainers_team" {
   name        = "maintainers"
   description = "Maintainers"
+  privacy = secret
 }
 
 # data "github_team" "maintainers_team" {
@@ -33,13 +34,13 @@ resource "github_team" "maintainers" {
 
 resource "github_team_repository" "maintainers_team_repos" {
   for_each   = module.repository
-  team_id    = data.github_team.maintainers.id
+  team_id    = github_team.maintainers_team.id
   repository = each.value.name
   permission = "push"
 }
 
 resource "github_team_members" "maintainers_team_members" {
-  team_id  = github_team.maintainers.id
+  team_id  = github_team.maintainers_team.id
   
   members {
     username = "sewerynmi"
