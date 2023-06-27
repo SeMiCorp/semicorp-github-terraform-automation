@@ -8,7 +8,7 @@ resource "github_branch_protection_v3" "main" {
       required_pull_request_reviews[0].required_approving_review_count
     ]
   }
-  repository_id = data.github_repository.default.name
+  repository = data.github_repository.default.name
 
   pattern                         = "main"
   required_linear_history         = true
