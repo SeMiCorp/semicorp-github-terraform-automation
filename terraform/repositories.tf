@@ -1,10 +1,7 @@
 locals {
 
    checks = {
-    drone = [
-      "continuous-integration/drone/pr",
-      "continuous-integration/drone/push"
-    ]
+    
   }
 
   repositories = {
