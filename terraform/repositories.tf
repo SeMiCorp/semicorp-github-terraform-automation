@@ -1,10 +1,18 @@
 locals {
+
+   checks = {
+    drone = [
+      "continuous-integration/drone/pr",
+      "continuous-integration/drone/push"
+    ]
+  }
+
   repositories = {
     "github-terraform-automation" : {
       "checks" : ["terraform-validate"]
     },
     "demo-repo" : {
-      
+      "checks" : ["terraform-validate"]
     }
   }
   repository_configs = {

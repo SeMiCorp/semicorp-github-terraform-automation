@@ -1,9 +1,11 @@
 name: Validate Config
 on:
   push:
+    branches-ignore:
+      - main
+  pull_request:
     branches:
       - main
-      - "**issue-**"
 
 jobs:
   terraform-validate:
@@ -32,6 +34,6 @@ jobs:
         id: plan
         run: terraform plan -out=tfplan
 
-      - name: Terraform Apply
-        id: apply
-        run: terraform apply -auto-approve tfplan
+      # - name: Terraform Apply
+      #   id: apply
+      #   run: terraform apply -auto-approve tfplan
