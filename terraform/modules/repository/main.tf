@@ -8,7 +8,7 @@ resource "github_branch_protection" "main" {
       required_pull_request_reviews[0].required_approving_review_count
     ]
   }
-  repository = data.github_repository.default.name
+  repository_id = data.github_repository.default.name
 
   pattern = "main"
   require_conversation_resolution = true
