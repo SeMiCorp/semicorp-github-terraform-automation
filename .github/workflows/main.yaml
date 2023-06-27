@@ -28,10 +28,14 @@ jobs:
         id: validate
         run: terraform validate
 
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check -recursive
+
       - name: Terraform Plan
         id: plan
         run: terraform plan -out=tfplan
 
-      - name: Terraform Apply
-        id: apply
-        run: terraform apply -auto-approve tfplan
+      # - name: Terraform Apply
+      #   id: apply
+      #   run: terraform apply -auto-approve tfplan
