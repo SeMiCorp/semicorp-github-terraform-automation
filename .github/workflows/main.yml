@@ -1,14 +1,12 @@
-name: Validate Config
+name: Apply Configiguration
 on:
   push:
-    branches-ignore:
-      - main
-  pull_request:
     branches:
       - main
+      - "**issue-**"
 
 jobs:
-  terraform-validate:
+  terraform-plan-and-apply:
     defaults:
       run:
         working-directory: ./terraform
@@ -34,6 +32,6 @@ jobs:
         id: plan
         run: terraform plan -out=tfplan
 
-      # - name: Terraform Apply
-      #   id: apply
-      #   run: terraform apply -auto-approve tfplan
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve tfplan
