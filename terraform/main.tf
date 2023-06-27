@@ -39,7 +39,7 @@ resource "github_team_repository" "maintainers_team_repos" {
 }
 
 resource "github_team_members" "maintainers_team_members" {
-  team_id  = data.github_team.maintainers.id
+  team_id  = github_team.maintainers.id
   
   members {
     username = "sewerynmi"
