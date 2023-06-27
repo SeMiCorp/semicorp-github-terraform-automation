@@ -2,7 +2,7 @@ data "github_repository" "default" {
   name = var.name
 }
 
-resource "github_branch_protection" "main" {
+resource "github_branch_protection_v3" "main" {
   lifecycle {
     ignore_changes = [
       required_pull_request_reviews[0].required_approving_review_count
