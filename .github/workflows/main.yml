@@ -1,4 +1,4 @@
-name: Apply Configiguration
+name: Apply Configuration
 on:
   push:
     branches:
