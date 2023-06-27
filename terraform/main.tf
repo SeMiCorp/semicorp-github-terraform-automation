@@ -25,7 +25,6 @@ resource "github_team_repository" "semicorp_repos" {
 resource "github_team" "maintainers_team" {
   name        = "maintainers"
   description = "Maintainers"
-  privacy = "secret"
 }
 
 # data "github_team" "maintainers_team" {
