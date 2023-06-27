@@ -44,7 +44,7 @@ resource "github_team_members" "maintainers_team_members" {
   
   members {
     username = "sewerynmi"
-    role     = "member"
+    role     = "maintainer"
   }
   
   members {
